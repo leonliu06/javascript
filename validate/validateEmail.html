@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Validate Email</title>
+
+    <script type="text/javascript">
+
+        function validateRequired(field, alertTxt) {
+            with (field){
+                if(value == null || value == ""){
+                    alert(alertTxt);
+                    return false;
+                }else {
+                    return true;
+                }
+            }
+        }
+
+        function validateEmail(field, alertText) {
+            with (field){
+                var apos = value.indexOf("@");
+                var dotpos = value.lastIndexOf(".");
+                if(apos < 1 || dotpos - apos < 2){
+                    alert(alertText);
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+        }
+
+        function validateForm(thisform) {
+            with (thisform){
+                if(validateRequired(email, "Email must be filled out!") == false || validateEmail(email, "Not a valid e-mail address!") == false){
+                    email.focus();
+                    return false;
+                }
+            }
+        }
+
+    </script>
+
+
+</head>
+
+
+<body>
+
+
+<form action="hello.html" onsubmit="return validateForm(this)" method="post">
+    Email: <input type="text" name="email" size="30">
+    <input type="submit" value="Submit">
+</form>
+
+
+</body>
+
+
+</html>

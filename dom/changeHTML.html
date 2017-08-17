@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change HTML By JavaScript</title>
+</head>
+<body>
+
+<h2>Change out stream of HTML</h2>
+<p>不要在文档加载之后使用document.write()。这会覆盖该文档。</p>
+<script>
+    document.write(Date());
+</script>
+
+<p>--------------------------------------------------------</p>
+
+<h2>Change content of HTML</h2>
+<p id="p1">Hello World!</p><input type="button" onclick="change()" value="Change Content">
+<script>
+    function change() {
+        document.getElementById("p1").innerHTML="New Text!";
+    }
+</script>
+
+<p>--------------------------------------------------------</p>
+
+<h2>Change attribute of DOM</h2>
+<img id="img1" width="100" height="100" src="Penguins.jpg"><br/>
+<input type="button" onclick="changeAttribute()" value="Change Attribute">
+<script>
+    function changeAttribute(){
+        document.getElementById("img1").src="Tulips.jpg";
+    }
+</script>
+
+<p>--------------------------------------------------------</p>
+
+<h2>Change CSS of DOM</h2>
+<p id="p2">Hello World!</p><input type="button" onclick="changeCSS()" value="Change CSS"><br/>
+<input id="b2" type="button" onclick="hide()" value="Hide">
+
+<script>
+    function changeCSS() {
+        document.getElementById("p2").style.color = "blue";
+        document.getElementById("p2").style.fontFamily = "Arial";
+        document.getElementById("p2").style.fontSize = "larger";
+    }
+    function hide() {
+        if(document.getElementById("p2").style.visibility == "hidden"){
+            document.getElementById("p2").style.visibility="visible";
+            document.getElementById("b2").value = "Hide";
+            return;
+        }
+        document.getElementById("p2").style.visibility="hidden";
+        document.getElementById("b2").value = "Show";
+    }
+</script>
+
+<p>--------------------------------------------------------</p>
+
+
+
+</body>
+</html>
