@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RegExp</title>
+</head>
+<body>
+
+<script>
+    var pattern = new RegExp("e");
+    document.write(pattern.test("the best things in life are free") + "<br/>");
+    document.write(pattern.exec("the best things in life are free") + "<br/>");
+    var pattern1 = new RegExp("e", "g");
+    do{
+        result = pattern1.exec("The best things in life are free" + "<br/>");
+        document.write(result);
+    }while(result != null);
+    pattern.compile("d");
+    document.write(pattern.test("The best things in life are free"));
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JsLibs</title>
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+</head>
+<body>
+
+<h1 id="h01"></h1>
+<h2>CDN - 内容分发网络</h2>
+<p>CDN(Content Delivery Network)是包含可分享代码库的服务器网络。</p>
+
+<h2>链式语法</h2>
+<p>jQuery允许链接（链式语法）。</p>
+<p>链接（Chaining）是一种在同一对象上执行多个任务的便捷方法。</p>
+
+<script>
+    function myFunction() {
+        $('#h01').html("Hello jQuery").attr("style", "color: red");
+    }
+    $(document).ready(myFunction());
+</script>
+
+</body>
+</html>

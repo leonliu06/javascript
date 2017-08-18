@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Window</title>
+</head>
+<body onload="checkCookie()">
+
+<h2>浏览器对象模型（BOM）使JavaScript有能力与浏览器“对话”</h2>
+
+<h2>浏览对象模型（BOM）</h2>
+<p>浏览器对象模型（Browser Object Model）尚无正式标准。</p>
+<p>由于现代浏览器已经（几乎）实现了JavaScript交互性方面的相同方法和属性，因此常被认为是BOM的方法和属性。</p>
+
+<h2>Window对象</h2>
+<p>所有浏览器都支持window对象。它表示浏览器窗口。</p>
+<p>所有JavasScript全局对象、函数以及变量均自动成为window对象的成员。</p>
+<p>全局变量是window对象的属性。</p>
+<p>全局函数是window对象的方法。</p>
+
+<p>----------------------------------------------------------</p>
+
+<h2>Window Location</h2>
+<p>window.location.assign()方法加载新的文档</p>
+<button onclick="newDoc()">加载新文档</button>
+<script>
+    function newDoc() {
+        window.location.assign("http://www.superalloy.biz");
+    }
+</script>
+
+<p>----------------------------------------------------------</p>
+
+<h2>Window History</h2>
+<button onclick="goBack()">后退</button>
+<button onclick="goForward()">向前</button>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+    function goForward() {
+        window.history.forward();
+    }
+</script>
+
+<p>----------------------------------------------------------</p>
+
+<h2>Window Navigator</h2>
+<div id="navigator"></div>
+<button onclick="showNavInfo()">Show Browser Info</button>
+<script>
+    function showNavInfo() {
+        var txt = "<p>Browser CodeName: " + window.navigator.appCodeName + "</p>";
+        txt += "<p>Browser Name: " + window.navigator.appName + "</p>";
+        txt += "<p>Browser Version: " + window.navigator.appVersion + "</p>";
+        txt += "<p>Cookies Enabled: " + window.navigator.cookieEnabled + "</p>";
+        txt += "<p>Platform: " + window.navigator.platform + "</p>";
+        txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
+        txt += "<p>User-agent language: " + navigator.systemLanguage + "</p>";
+
+        document.getElementById("navigator").innerHTML = txt;
+    }
+</script>
+
+<p>----------------------------------------------------------</p>
+
+<h2>通过使用JavaScript,我们有能力做到在一个设定的时间间隔之后来执行代码，而不是在函数被调用后立即执行。我们称之为计时事件。</h2>
+<h2>JavaScript计时事件</h2>
+<p>setTimeout() 未来的某时执行代码</p>
+<p>clearTimeout() 取消setTimeout()</p>
+
+<button onclick="timedMsg()">Display timed alertbox!</button><br/>
+<input type="button" value="Start Count!" onclick="timedCount()">
+<input type="button" value="Stop Count!" onclick="stopCount()">
+<input id="txt" type="text">
+<script>
+    function timedMsg() {
+        var t = setTimeout("alert('2 seconds!')", 2000);
+    }
+
+    var c = 0;
+    var t;
+    function timedCount() {
+        document.getElementById("txt").value = c;
+        c = c + 1;
+        t = setTimeout("timedCount()", 1000);
+    }
+    function stopCount() {
+        clearTimeout(t);
+    }
+
+</script>
+
+<p>----------------------------------------------------------</p>
+
+<h2>什么是cookie?</h2>
+<p>cookie是存储于访问者的计算机中的变量。每当同一台计算机通过浏览器请求某个页面时，就会发送这个cookie。你可以使用JavaScript来创建和取回 cookie的值。</p>
+
+
+<script>
+    function setCookie(name, value, expireDays) {
+        var exdate = new Date();
+        exdate.setDate(exdate.getDate() + expireDays);
+        document.cookie = name + "=" + window.escape(value) + (expireDays == null ? "" : ";expires=" + exdate.toGMTString());
+    }
+    function getCookie(name) {
+        if(document.cookie.length > 0){
+            var start = document.cookie.indexOf(name + "=");
+            if(start != -1){
+                start = start + name.length + 1;
+                var end = document.cookie.indexOf(";", start);
+                if(end == -1){
+                    end = document.cookie.length;
+                }
+                return window.unescape(document.cookie.substring(start, end));
+            }
+        }
+        return "";
+    }
+    function checkCookie() {
+        var userName = getCookie("userName");
+        if(userName != null && userName != ""){
+            alert("Welcome again " + userName + "!");
+        }else{
+            debugger;
+            userName = prompt('Please enter your name:', "");
+            debugger;
+            if(userName != null && userName != ""){
+                setCookie('userName', userName, 365);
+            }
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
