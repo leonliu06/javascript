@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scroll3</title>
+
+    <style type="text/css">
+        ul,li{margin:0;padding:0;font-size:12px;color:#999;}
+        ul {height:200px;overflow:hidden;}
+        ul li{line-height:20px;height:25px;}
+    </style>
+
+</head>
+<body style="text-align: center; margin-top: 200px">
+
+<div style="background-color: antiquewhite; border: 10px; border-color: aquamarine; margin-top: 40px; margin-bottom: 40px; ">
+
+    <ul id="list">
+        <li>猎狗手真欠猎狗手真欠猎狗手真欠猎狗手真欠1</li>
+        <li>猎狗手真欠猎狗手真欠猎狗手真欠猎狗手真欠2</li>
+        <li>猎狗手真欠猎狗手真欠猎狗手真欠猎狗手真欠3</li>
+        <li>猎狗手真欠猎狗手真欠猎狗手真欠猎狗手真欠4</li>
+        <li>猎狗手真欠猎狗手真欠猎狗手真欠猎狗手真欠5</li>
+        <li>猎狗手真欠猎狗手真欠猎狗手真欠猎狗手真欠6</li>
+        <li>猎狗手真欠猎狗手真欠猎狗手真欠猎狗手真欠7</li>
+        <li>猎狗手真欠猎狗手真欠猎狗手真欠猎狗手真欠8</li>
+        <li>猎狗手真欠猎狗手真欠猎狗手真欠猎狗手真欠9</li>
+        <li>猎狗手真欠猎狗手真欠猎狗手真欠猎狗手真欠10</li>
+        <li>猎狗手真欠猎狗手真欠猎狗手真欠猎狗手真欠11</li>
+        <li>猎狗手真欠猎狗手真欠猎狗手真欠猎狗手真欠12</li>
+        <li>猎狗手真欠猎狗手真欠猎狗手真欠猎狗手真欠13</li>
+        <li>猎狗手真欠猎狗手真欠猎狗手真欠猎狗手真欠14</li>
+    </ul>
+
+</div>
+
+
+<script type="text/javascript">
+
+    function scroll(element, delay, speed, lineHeight) {
+
+        var slideBox = document.getElementById(element);
+
+        var numGroup = 5;
+
+        var tId = null;
+        tId = setInterval(slide, 500);
+
+        function slide() {
+
+            if(slideBox.scrollTop + slideBox.offsetHeight == slideBox.scrollHeight){
+                clearInterval(tId);
+                for(var i = 0; i < numGroup; i++){
+                    slideBox.appendChild(slideBox.getElementsByTagName('li')[0]);
+                }
+                tId = setInterval(slide, 500);
+            }
+
+            slideBox.scrollTop += 10;
+
+        }
+    }
+
+    setTimeout("scroll('list')", 1000);
+
+</script>
+
+
+</body>
+</html>

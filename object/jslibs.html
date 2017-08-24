@@ -17,9 +17,14 @@
 <p>jQuery允许链接（链式语法）。</p>
 <p>链接（Chaining）是一种在同一对象上执行多个任务的便捷方法。</p>
 
+<input id="hello" type="button" value="Hello" onclick="hello()">
+
 <script>
     function myFunction() {
         $('#h01').html("Hello jQuery").attr("style", "color: red");
+    }
+    function hello() {
+        prompt("Had I not seen the Sun, I could have borne the shade, But Light a newer Wilderness, My Wilderness has made");
     }
     $(document).ready(myFunction());
 </script>
