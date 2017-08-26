@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>upload</title>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+    <script src="js/jquery-easyui-1.5.2/jquery.easyui.min.js"></script>
+
+</head>
+<body>
+
+
+<input id="fileName" class="easyui-textbox" style="width: 150px;" data-options="readonly:true" name="fileName" required/>
+<a href="#" id="browse" class="easyui-linkbutton" style="width: 50px; border: none">上传</a> <br/>
+<input id="upload" type="file" style="display: none;" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+
+
+<script>
+
+    $('#browse').on('click', function(){document.getElementById('upload').click();});
+    $('#upload').on('change', handleFiles);
+
+    function handleFiles(e){
+        var fileObj = document.getElementById('upload').files[0];
+        if(fileObj != undefined){
+            if(fileObj.type != "application/vnd.ms-excel" && fileObj.type != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"){
+                $.messager.alert('', '文件类型错误', 'info');
+                return;
+            }
+            $('#fileName').textbox('setValue', fileObj.name);
+            console.log(fileObj.size);
+        }else{
+            $('#fileName').textbox('setValue', undefined);
+        }
+    }
+
+
+</script>
+
+
+</body>
+<html>

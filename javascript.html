@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form id='ff' class=easyui-form>
+    <input id="txt_head"  name="name" class="easyui-filebox" data-options="buttonText:'选择头像',accept: 'image/*',buttonAlign:left,editable:false" />
+</form>
+
+<script>
+    $("#ff").form('submit', {
+        url: '/Trainee/importHead',
+        data: $("#ff").serialize(),
+        success: function (result) {
+
+        }
+    });
+</script>
+
+
+</body>
+</html>
